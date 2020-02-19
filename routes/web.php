@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+	//{variable que se resive en la URL}
+
+Route::get('prueba/{nombre?}', function($nombre = 'Desconocido'){
+	$nombre = strtoupper($nombre);
+	return view('vista-prueba')->with(['nombre' => $nombre]);
+});
+
+
