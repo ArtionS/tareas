@@ -66,7 +66,7 @@ class TareaController extends Controller
     public function show(Tarea $tarea)
     {
         //dd($tarea);
-        return $tarea;
+        return view('Tarea/tareaShow', compact('tarea'));
     }
 
     /**
