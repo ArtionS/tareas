@@ -6,14 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Vista de Prueba</div>
-
                 <div class="card-body">
-
-
                     Holitas {{$nombre}}
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+@endsections

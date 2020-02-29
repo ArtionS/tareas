@@ -26,4 +26,4 @@ Route::get('prueba/{nombre?}', function($nombre = 'Desconocido'){
 	return view('vista-prueba')->with(['nombre' => $nombre]);
 });
 
-
+Route::resource('/tarea', 'TareaController');
