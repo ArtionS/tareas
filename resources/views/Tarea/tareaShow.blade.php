@@ -12,6 +12,17 @@
 
                     <a href="{{ action('TareaController@index')}}" class="btn btn-primary btn-ms">Lista Tareas</a>
 
+                    <a href="{{ route('tarea.edit' , $tarea->id)}}" class="btn btn-warning btn-ms">Editar Tareas</a>
+
+                    <hr>
+
+                    <form action="{{route('tarea.destroy' , $tarea->id)}} " method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger">Borrar</button>
+
+                    </form>
+
                     <br>   
                     <br>   
 

@@ -41,6 +41,15 @@ class TareaController extends Controller
     {
         //dd($request->all());
 
+        $request->validate([
+            'tarea' => 'required|max:255',
+            'fecha_entrega' => 'required|date',
+            'prioridad' => 'required|int|min:1|max:10',
+            'descripcion' => 'required',
+
+        ]);
+
+
         $tarea = new Tarea();
 
         $tarea->tarea = $request->tarea;
@@ -77,7 +86,7 @@ class TareaController extends Controller
      */
     public function edit(Tarea $tarea)
     {
-        //
+        return view('Tarea.tareaForm' , compact('tarea'));
     }
 
     /**
@@ -89,7 +98,26 @@ class TareaController extends Controller
      */
     public function update(Request $request, Tarea $tarea)
     {
-        //
+        $request->validate([
+            'tarea' => 'required|max:255',
+            'fecha_entrega' => 'required|date',
+            'prioridad' => 'required|int|min:1|max:10',
+            'descripcion' => 'required',
+
+        ]);
+        
+        $tarea->tarea = $request->tarea;
+        $tarea->fecha_entrega = $request->fecha_entrega;
+        $tarea->prioridad = $request->prioridad;
+        $tarea->descripcion = $request->descripcion  ?? '';
+
+        $tarea->save();
+
+        //dd($tarea);
+
+        ///return 'Datos Recibidos';
+
+        return redirect()->route('tarea.show' , $tarea->id);
     }
 
     /**
@@ -100,6 +128,7 @@ class TareaController extends Controller
      */
     public function destroy(Tarea $tarea)
     {
-        //
+        $tarea->delete();
+        return redirect()->route('tarea.index');
     }
 }
