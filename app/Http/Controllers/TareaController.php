@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TareaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');//->except(['' , ''])
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +56,7 @@ class TareaController extends Controller
 
 
         $tarea = new Tarea();
-
+        $tarea->user_id = \Auth::id();
         $tarea->tarea = $request->tarea;
         $tarea->fecha_entrega = $request->fecha_entrega;
         $tarea->prioridad = $request->prioridad;
