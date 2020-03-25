@@ -83,10 +83,20 @@
                             <!-- <textarea class="form-control" name="descripcion" rows="3">{{$tarea->descripcion ?? ''}}</textarea> -->
                         </div>
 
+
+                        <!-- Prioridad -->
+                        <div class="form-group">
+                            <label for="categoria_id">Categoria</label>
+
+                            {!! Form::select('categoria_id', 
+                                $categorias, null, ['class' => 'form-control'] ) !!}
+
+                        </div>
+
+
                         {!! Form::submit('Guardar' , ['class'=>'btn btn-outline-primary']) !!}
 
                         <!-- <button type="submit" class="btn btn-outline-primary">Guardar</button> -->
-
 
                     <!-- </form> -->
                     {!! Form::close() !!}

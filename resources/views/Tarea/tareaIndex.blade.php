@@ -22,6 +22,8 @@
                           <th scope="col">Tarea</th>
                           <th scope="col">Descripcion</th>
                           <th scope="col">Prioridad</th>
+                          <th scope="col">Categoria</th>
+                          <th scope="col">Usuario</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -34,6 +36,8 @@
                           </td>
                           <td>{{$tarea->descripcion}}</td>
                           <td>{{$tarea->prioridad}}</td>
+                          <td>{{$tarea->categoria->nombre}}</td>
+                          <td>{{$tarea->user->name}}</td>
                         </tr>
     
                         @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use App\Tarea;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,9 @@ class TareaController extends Controller
      */
     public function create()
     {
-        return view('Tarea/tareaForm');
+        $categorias = Categoria::all()->pluck('nombre' , 'id');
+        //llamamos a todo lo del modelo
+        return view('Tarea/tareaForm', compact('categorias'));
     }
 
     /**
@@ -61,6 +64,7 @@ class TareaController extends Controller
         $tarea->fecha_entrega = $request->fecha_entrega;
         $tarea->prioridad = $request->prioridad;
         $tarea->descripcion = $request->descripcion;
+        $tarea->categoria_id = $request->categoria_id;
 
         $tarea->save();
 
@@ -91,7 +95,11 @@ class TareaController extends Controller
      */
     public function edit(Tarea $tarea)
     {
-        return view('Tarea.tareaForm' , compact('tarea'));
+
+        $categorias = Categoria::all()->pluck('nombre' , 'id');
+        //llamamos a todo lo del modelo
+
+        return view('Tarea.tareaForm' , compact('tarea' , 'categorias'));
     }
 
     /**
@@ -115,6 +123,7 @@ class TareaController extends Controller
         $tarea->fecha_entrega = $request->fecha_entrega;
         $tarea->prioridad = $request->prioridad;
         $tarea->descripcion = $request->descripcion  ?? '';
+        $tarea->categoria_id = $request->categoria_id;
 
         $tarea->save();
 
